@@ -8,15 +8,16 @@ const Wrapper = styled.div`
   height: 50px;
   display: flex;
   flex-direction: column;
+  margin: 15px;
   border: none;
   border-radius: 10px;
   ${(props) =>
     props.isCompleted ?
-      `backgoround: #D6DCFF;` : `background: #ECEFFF;`
-  }
+      `background: #9dabf9;` : `background: #ECEFFF;`
+  };
   cursor: pointer;
   :hover{
-    background: #D6DCFF;
+    background: #9dabf9;
   }
 `;
 
@@ -41,7 +42,7 @@ function TodoListItem(props) {
   const [content, setContent] = useState(todoList.content);
 
   return (
-    <Wrapper>
+    <Wrapper isCompleted={todoList.isCompleted}>
       <ButtonWrapper>
         <DeleteButton />
       </ButtonWrapper>
