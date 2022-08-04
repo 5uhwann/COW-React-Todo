@@ -4,7 +4,7 @@ import Input from '../ui/ListItemInput';
 import DeleteButton from '../ui/DeleteButton';
 
 const Wrapper = styled.div`
-  width: 40vh;
+  width: 60vw;
   height: 50px;
   display: flex;
   flex-direction: column;
@@ -37,14 +37,16 @@ const InputWrapper = styled.div`
 
 function TodoListItem(props) {
 
+  const { post, onClick } = props;
+
   return (
     <Wrapper>
       <ButtonWrapper>
         <DeleteButton />
       </ButtonWrapper>
 
-      <InputWrapper>
-        <Input />
+      <InputWrapper onClick={onClick}>
+        <Input value={"a"} />
       </InputWrapper>
     </Wrapper>
   )
