@@ -38,16 +38,22 @@ const InputWrapper = styled.div`
 
 function TodoListItem(props) {
 
-  const { todoList, onClick } = props;
+  const { todoList } = props;
   const [content, setContent] = useState(todoList.content);
+  const [isCompleted, setIsCompleted] = useState(todoList.isCompleted);
 
   return (
-    <Wrapper isCompleted={todoList.isCompleted}>
+    <Wrapper
+      isCompleted={isCompleted}
+      onClick={(isCompleted) => {
+        setIsCompleted(isCompleted ? false : true);
+      }}
+    >
       <ButtonWrapper>
         <DeleteButton />
       </ButtonWrapper>
 
-      <InputWrapper onClick={onClick}>
+      <InputWrapper >
         <Input
           value={content}
           onChange={(event) => {

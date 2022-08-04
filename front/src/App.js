@@ -33,7 +33,6 @@ function App() {
     <TodoList
       todoLists={data}
       onClockItem={(event) => {
-        // event.target.style.color = "red";
       }}
     />
   );
