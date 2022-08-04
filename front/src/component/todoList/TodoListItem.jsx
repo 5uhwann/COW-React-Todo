@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../ui/ListItemInput';
 import DeleteButton from '../ui/DeleteButton';
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   border: none;
   border-radius: 10px;
   ${(props) =>
-    props.isDo ?
+    props.isCompleted ?
       `backgoround: #D6DCFF;` : `background: #ECEFFF;`
   }
   cursor: pointer;
@@ -37,7 +37,8 @@ const InputWrapper = styled.div`
 
 function TodoListItem(props) {
 
-  const { post, onClick } = props;
+  const { todoList, onClick } = props;
+  const [content, setContent] = useState(todoList.content);
 
   return (
     <Wrapper>
@@ -46,7 +47,12 @@ function TodoListItem(props) {
       </ButtonWrapper>
 
       <InputWrapper onClick={onClick}>
-        <Input value={"a"} />
+        <Input
+          value={content}
+          onChange={(event) => {
+            setContent(event.target.value);
+          }}
+        />
       </InputWrapper>
     </Wrapper>
   )
