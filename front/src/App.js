@@ -2,7 +2,7 @@ import './App.css';
 import AddButton from './component/ui/AddButton';
 import TodoListItem from './component/todoList/TodoListItem';
 import TodoList from './component/todoList/TodoList';
-
+import Menu from './component/menu/Menu';
 const data = [
   {
     "id": 1,
@@ -30,12 +30,13 @@ const data = [
 
 function App() {
   return (
-    <TodoList
-      todoLists={data}
-      onClockItem={(event) => {
-      }}
-    />
-  );
+    // <TodoList
+    //   todoLists={data}
+    //   onClockItem={(event) => {
+    //   }}
+    // />
+    <Menu />
+  )
 }
 
 
