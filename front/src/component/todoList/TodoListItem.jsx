@@ -4,11 +4,11 @@ import Input from '../ui/ListItemInput';
 import DeleteButton from '../ui/DeleteButton';
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 60px;
+  width: 95%;
+  height: 70px;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 20px 0;
   border: none;
   border-radius: 10px;
   ${(props) =>

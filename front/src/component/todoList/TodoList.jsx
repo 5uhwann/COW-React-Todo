@@ -5,9 +5,11 @@ import TodoListItem from './TodoListItem';
 const Wrapper = styled.div`
   width: 55%;
   height: 90%;
-  display: flex;
-  flex-direction: column;
   margin-left: 90px;
+  overflow: scroll;
+  ::-webkit-scrollbar{
+    display: none;
+  }
 `;
 
 function TodoList(props) {
