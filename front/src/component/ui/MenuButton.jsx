@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledMenuButton = styled.button`
   width: 100%;
-  height: 50px;
+  height: 10%;
   margin: 0;
   text-align: center;
   border: none;

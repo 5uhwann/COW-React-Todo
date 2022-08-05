@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
 
 const Wrapper = styled.div`
-  width: 60vw;
-  height: 50vh;
+  width: 55%;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-left: 90px;
 `;
 
 function TodoList(props) {

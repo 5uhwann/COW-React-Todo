@@ -3,6 +3,8 @@ import AddButton from './component/ui/AddButton';
 import TodoListItem from './component/todoList/TodoListItem';
 import TodoList from './component/todoList/TodoList';
 import Menu from './component/menu/Menu';
+import MainPage from './component/pages/MainPage';
+
 const data = [
   {
     "id": 1,
@@ -27,15 +29,9 @@ const data = [
   }
 ]
 
-
 function App() {
   return (
-    // <TodoList
-    //   todoLists={data}
-    //   onClockItem={(event) => {
-    //   }}
-    // />
-    <Menu />
+    <MainPage />
   )
 }
 

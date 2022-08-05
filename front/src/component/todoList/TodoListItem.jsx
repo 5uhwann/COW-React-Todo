@@ -4,8 +4,8 @@ import Input from '../ui/ListItemInput';
 import DeleteButton from '../ui/DeleteButton';
 
 const Wrapper = styled.div`
-  width: 60vw;
-  height: 50px;
+  width: 100%;
+  height: 60px;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -35,6 +35,7 @@ const InputWrapper = styled.div`
   justify-content: left;
   border: none;
 `;
+
 
 function TodoListItem(props) {
 
