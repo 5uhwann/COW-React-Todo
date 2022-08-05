@@ -13,6 +13,11 @@ const StyledAddButton = styled.button`
   cursor: pointer;
   margin: auto;
   font-size: 50px;
+  :hover{
+    transform: scale(1.03);
+    transition: all 0.3s;
+    box-shadow: 0px 0px 9px 3px rgb(222 221 221);
+  }
 `;
 
 function AddButton(props) {
