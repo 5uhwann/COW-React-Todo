@@ -42,12 +42,16 @@ function TodoListItem(props) {
   const { todoList } = props;
   const [content, setContent] = useState(todoList.content);
   const [isCompleted, setIsCompleted] = useState(todoList.isCompleted);
+  const [disable, setDisable] = useState(true);
 
   return (
     <Wrapper
       isCompleted={isCompleted}
       onClick={(isCompleted) => {
         setIsCompleted(isCompleted ? false : true);
+      }}
+      onDoubleClick={() => {
+        setDisable(false);
       }}
     >
       <ButtonWrapper>
@@ -59,6 +63,10 @@ function TodoListItem(props) {
           value={content}
           onChange={(event) => {
             setContent(event.target.value);
+          }}
+          disable={disable}
+          onBlur={() => {
+            setDisable(true);
           }}
         />
       </InputWrapper>

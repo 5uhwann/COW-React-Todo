@@ -11,11 +11,17 @@ const StyledInput = styled.input`
   background: transparent;
   cursor: pointer;
 `;
+
 function Input(props) {
 
-  const { value, onChange } = props;
+  const { value, onChange, disable, onBlur } = props;
 
-  return <StyledInput value={value} onChange={onChange} />
+  return <StyledInput
+    disabled={disable}
+    value={value}
+    onChange={onChange}
+    onBlur={onBlur}
+  />
 }
 
 export default Input;
