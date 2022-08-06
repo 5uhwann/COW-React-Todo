@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MenuButton from '../ui/MenuButton';
 
@@ -20,27 +20,40 @@ const Block = styled.div`
 
 function Menu(props) {
 
+  const [isAllClicked, setIsAllClicked] = useState(true);
+  const [isCompletedClicked, setIsCompletedClicked] = useState(false);
+  const [isUnCompletedClicked, setIsUnCompletedClicked] = useState(false);
+
   return (
     <Wrapper>
       <Block />
       <MenuButton
         title={"All"}
+        isClicked={isAllClicked}
         onClick={() => {
-
+          setIsAllClicked(!isAllClicked);
+          setIsCompletedClicked(false);
+          setIsUnCompletedClicked(false);
         }}
       />
 
       <MenuButton
         title={"Completed"}
+        isClicked={isCompletedClicked}
         onClick={() => {
-
+          setIsCompletedClicked(!isCompletedClicked);
+          setIsAllClicked(false);
+          setIsUnCompletedClicked(false);
         }}
       />
 
       <MenuButton
         title={"Uncompleted"}
+        isClicked={isUnCompletedClicked}
         onClick={() => {
-
+          setIsUnCompletedClicked(!isUnCompletedClicked);
+          setIsAllClicked(false);
+          setIsCompletedClicked(false);
         }}
       />
     </Wrapper>

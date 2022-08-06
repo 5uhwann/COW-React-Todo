@@ -8,17 +8,22 @@ const StyledMenuButton = styled.button`
   text-align: center;
   border: none;
   border-bottom: 0.5px solid gray;
-  background: transparent;
+  ${(props) =>
+    props.isClicked ?
+      `background: #9dabf9;` : `background: #ECEFFF;`
+  };
   font-weight: bold;
   :hover{
-    background: #9dabf9;
+    transform: scale(1.1);
+    transition: all 0.3s;
+    border: none;
   }
 `;
 
 function MenuButton(props) {
-  const { title, onClick } = props;
+  const { title, onClick, isClicked } = props;
 
-  return <StyledMenuButton onClick={onClick}>{title}</StyledMenuButton>
+  return <StyledMenuButton onClick={onClick} isClicked={isClicked}>{title}</StyledMenuButton>
 }
 
 export default MenuButton;
