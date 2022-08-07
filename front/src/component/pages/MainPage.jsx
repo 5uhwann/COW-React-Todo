@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Menu from '../menu/Menu';
 import TodoList from '../todoList/TodoList';
 import AddButton from '../ui/AddButton';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -44,59 +45,18 @@ const Body = styled.div`
   align-items: center;
 `;
 
-const data = [
-  {
-    "id": 1,
-    "content": "test1",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 2,
-    "content": "test2",
-    "isCompleted": true,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 3,
-    "content": "test3",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 3,
-    "content": "test3",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 3,
-    "content": "test3",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 3,
-    "content": "test3",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  },
-  {
-    "id": 3,
-    "content": "test3",
-    "isCompleted": false,
-    "createdAt": "2022-07-26T00:14:52.449Z",
-    "updatedAt": "2022-07-26T00:15:20.000Z"
-  }
-]
 
 function MainPage(prosp) {
+
+  const [todoList, setTodoList] = useState();
+
+  useEffect(() => {
+    axios.get("http://localhost:5001/todo")
+      .then(function (response) {
+        console.log(response.data);
+        setTodoList(response.data);
+      })
+  }, [])
 
   return (
     <Wrapper>
@@ -109,12 +69,16 @@ function MainPage(prosp) {
 
         <Body>
           <TodoList
-            todoLists={data}
+            todoLists={todoList}
             onClick={() => {
 
             }}
           />
-          <AddButton />
+          <AddButton
+            onClick={() => {
+
+            }}
+          />
         </Body>
       </Container>
 
