@@ -53,7 +53,6 @@ function MainPage(prosp) {
   useEffect(() => {
     axios.get("http://localhost:5001/todo")
       .then(function (response) {
-        console.log(response.data);
         setTodoList(response.data);
       })
   }, [])

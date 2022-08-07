@@ -17,7 +17,7 @@ function TodoList(props) {
 
   return (
     <Wrapper>
-      {todoLists.map((todoList, index) => {
+      {todoLists && todoLists.map((todoList) => {
         return (
           <TodoListItem
             key={todoList.id}
