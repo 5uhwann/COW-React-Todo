@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Menu from '../menu/Menu';
-import TodoList from '../todoList/TodoList';
+import TodoListAll from '../todoList/TodoListAll';
+import TodoListCompleted from '../todoList/TodoListCompleted';
+import TodoListUnCompleted from '../todoList/TodoListUnCompleted';
 import AddButton from '../ui/AddButton';
 import axios from 'axios';
 
@@ -49,6 +51,16 @@ const Body = styled.div`
 function MainPage(prosp) {
 
   const [todoList, setTodoList] = useState();
+  const [filter, setFilter] = useState("all");
+
+  let list;
+  if (filter == "all") {
+    list = <TodoListAll todoLists={todoList} />;
+  } else if (filter == "completed") {
+    list = <TodoListCompleted todoLists={todoList} />;
+  } else if (filter == "unCompleted") {
+    list = <TodoListUnCompleted todoLists={todoList} />;
+  }
 
   useEffect(() => {
     axios.get("/todo")
@@ -60,7 +72,7 @@ function MainPage(prosp) {
 
   return (
     <Wrapper>
-      <Menu />
+      <Menu setFilter={setFilter} />
 
       <Container>
         <Header>
@@ -68,9 +80,7 @@ function MainPage(prosp) {
         </Header>
 
         <Body>
-          <TodoList
-            todoLists={todoList}
-          />
+          {list}
           <AddButton
             onClick={() => {
               axios.post("/todo",
