@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../ui/ListItemInput';
 import DeleteButton from '../ui/DeleteButton';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   width: 95%;
@@ -55,7 +56,11 @@ function TodoListItem(props) {
       }}
     >
       <ButtonWrapper>
-        <DeleteButton />
+        <DeleteButton
+          onClick={() => {
+            axios.delete(`todo/${todoList.id}`)
+          }}
+        />
       </ButtonWrapper>
 
       <InputWrapper >
