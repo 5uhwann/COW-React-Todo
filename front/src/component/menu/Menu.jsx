@@ -20,6 +20,8 @@ const Block = styled.div`
 
 function Menu(props) {
 
+  const { setFilter } = props;
+
   const [isAllClicked, setIsAllClicked] = useState(true);
   const [isCompletedClicked, setIsCompletedClicked] = useState(false);
   const [isUnCompletedClicked, setIsUnCompletedClicked] = useState(false);
@@ -34,6 +36,7 @@ function Menu(props) {
           setIsAllClicked(!isAllClicked);
           setIsCompletedClicked(false);
           setIsUnCompletedClicked(false);
+          setFilter("all");
         }}
       />
 
@@ -44,6 +47,7 @@ function Menu(props) {
           setIsCompletedClicked(!isCompletedClicked);
           setIsAllClicked(false);
           setIsUnCompletedClicked(false);
+          setFilter("completed");
         }}
       />
 
@@ -54,6 +58,7 @@ function Menu(props) {
           setIsUnCompletedClicked(!isUnCompletedClicked);
           setIsAllClicked(false);
           setIsCompletedClicked(false);
+          setFilter("unCompleted");
         }}
       />
     </Wrapper>

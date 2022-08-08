@@ -12,21 +12,24 @@ const Wrapper = styled.div`
   }
 `;
 
-function TodoList(props) {
+function TodoListCompleted(props) {
   const { todoLists } = props;
 
   return (
     <Wrapper>
       {todoLists && todoLists.map((todoList) => {
-        return (
-          <TodoListItem
-            key={todoList.id}
-            todoList={todoList}
-          />
-        );
-      })}
+        if (todoList.isCompleted === true) {
+          return (
+            <TodoListItem
+              key={todoList.id}
+              todoList={todoList}
+            />
+          );
+        }
+      })
+      }
     </Wrapper>
   )
 }
 
-export default TodoList;
+export default TodoListCompleted;
