@@ -70,9 +70,6 @@ function MainPage(prosp) {
         <Body>
           <TodoList
             todoLists={todoList}
-            onClick={() => {
-
-            }}
           />
           <AddButton
             onClick={() => {

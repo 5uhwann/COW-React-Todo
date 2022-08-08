@@ -42,14 +42,13 @@ function TodoListItem(props) {
 
   const { todoList } = props;
   const [content, setContent] = useState(todoList.content);
-  const [isCompleted, setIsCompleted] = useState(todoList.isCompleted);
   const [disable, setDisable] = useState(true);
 
   return (
     <Wrapper
-      isCompleted={isCompleted}
-      onClick={(isCompleted) => {
-        setIsCompleted(isCompleted ? false : true);
+      isCompleted={todoList.isCompleted}
+      onClick={() => {
+        axios.patch(`todo/status/${todoList.id}`)
       }}
       onDoubleClick={() => {
         setDisable(false);
