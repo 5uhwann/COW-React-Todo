@@ -72,6 +72,10 @@ function TodoListItem(props) {
           disable={disable}
           onBlur={() => {
             setDisable(true);
+            axios.patch(`todo/${todoList.id}`,
+              {
+                content: `${content}`
+              })
           }}
         />
       </InputWrapper>
