@@ -48,7 +48,8 @@ function TodoListItem(props) {
     <Wrapper
       isCompleted={todoList.isCompleted}
       onClick={() => {
-        axios.patch(`todo/status/${todoList.id}`)
+        disable &&
+          axios.patch(`todo/status/${todoList.id}`)
       }}
       onDoubleClick={() => {
         setDisable(false);

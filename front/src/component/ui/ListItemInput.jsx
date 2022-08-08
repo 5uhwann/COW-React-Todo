@@ -21,6 +21,7 @@ function Input(props) {
     value={value}
     onChange={onChange}
     onBlur={onBlur}
+    autoFocus={true}
   />
 }
 
