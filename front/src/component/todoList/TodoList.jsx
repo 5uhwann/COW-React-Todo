@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 function TodoList(props) {
-  const { todoLists, onClickItem } = props;
+  const { todoLists } = props;
 
   return (
     <Wrapper>
@@ -22,9 +22,6 @@ function TodoList(props) {
           <TodoListItem
             key={todoList.id}
             todoList={todoList}
-            onClick={() => {
-              onClickItem(todoList);
-            }}
           />
         );
       })}
