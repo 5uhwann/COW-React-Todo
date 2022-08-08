@@ -51,11 +51,12 @@ function MainPage(prosp) {
   const [todoList, setTodoList] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:5001/todo")
+    axios.get("/todo")
       .then(function (response) {
+        console.log(response);
         setTodoList(response.data);
       })
-  }, [])
+  })
 
   return (
     <Wrapper>
@@ -75,7 +76,13 @@ function MainPage(prosp) {
           />
           <AddButton
             onClick={() => {
-
+              axios.post("/todo",
+                {
+                  content: " "
+                })
+                .then(function (response) {
+                  console.log(response);
+                })
             }}
           />
         </Body>
