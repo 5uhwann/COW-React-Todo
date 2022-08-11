@@ -4,7 +4,12 @@ import Menu from '../menu/Menu';
 import TodoListAll from '../todoList/TodoListAll';
 import TodoListCompleted from '../todoList/TodoListCompleted';
 import TodoListUnCompleted from '../todoList/TodoListUnCompleted';
+import TodoGridAll from '../todoGrid/TodoGridAll';
+import TodoGridCompleted from '../todoGrid/TodoGridCompleted';
+import TodoGridUnComplted from '../todoGrid/TodoGridUnCompleted';
 import AddButton from '../ui/AddButton';
+import ListViewButton from '../ui/ListViewButton';
+import GridViewButton from '../ui/GridViewButton';
 import axios from 'axios';
 
 const Wrapper = styled.div`
@@ -38,6 +43,14 @@ const HeaderText = styled.p`
   margin: auto 90px;
 `;
 
+const HeaderViewButton = styled.div`
+  width: 130px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
+`;
+
 const Body = styled.div`
   width: 100%;
   height: 80vh;
@@ -52,20 +65,32 @@ function MainPage(prosp) {
 
   const [todoList, setTodoList] = useState();
   const [filter, setFilter] = useState("all");
+  const [view, setView] = useState("list");
 
-  let list;
-  if (filter == "all") {
-    list = <TodoListAll todoLists={todoList} />;
-  } else if (filter == "completed") {
-    list = <TodoListCompleted todoLists={todoList} />;
-  } else if (filter == "unCompleted") {
-    list = <TodoListUnCompleted todoLists={todoList} />;
+  let todo;
+
+  if (view == "list") {
+    if (filter == "all") {
+      todo = <TodoListAll todoLists={todoList} />;
+    } else if (filter == "completed") {
+      todo = <TodoListCompleted todoLists={todoList} />;
+    } else if (filter == "unCompleted") {
+      todo = <TodoListUnCompleted todoLists={todoList} />;
+    }
+  } else {
+    if (filter == "all") {
+      todo = <TodoGridAll todoLists={todoList} />;
+    } else if (filter == "completed") {
+      todo = <TodoGridCompleted todoLists={todoList} />;
+    } else if (filter == "unCompleted") {
+      todo = <TodoGridUnComplted todoLists={todoList} />;
+    }
   }
+
 
   useEffect(() => {
     axios.get("/todo")
       .then(function (response) {
-        console.log(response);
         setTodoList(response.data);
       })
   })
@@ -77,10 +102,22 @@ function MainPage(prosp) {
       <Container>
         <Header>
           <HeaderText>Todo</HeaderText>
+          <HeaderViewButton>
+            <ListViewButton
+              onClick={() => {
+                setView("list")
+              }}
+            />
+            <GridViewButton
+              onClick={() => {
+                setView("grid")
+              }}
+            />
+          </HeaderViewButton>
         </Header>
 
         <Body>
-          {list}
+          {todo}
           <AddButton
             onClick={() => {
               axios.post("/todo",
@@ -95,7 +132,7 @@ function MainPage(prosp) {
         </Body>
       </Container>
 
-    </Wrapper>
+    </Wrapper >
   )
 }
 

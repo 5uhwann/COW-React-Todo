@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import TodoListItem from './TodoListItem';
+import TodoGridItem from './TodoGridItem';
 
 
-const ListWrapper = styled.div`
+const GridWrapper = styled.div`
   width: 55%;
   height: 90%;
+  display: flex;
+  flex-wrap: wrap;
   margin-left: 90px;
   overflow: scroll;
   ::-webkit-scrollbar{
@@ -13,23 +15,22 @@ const ListWrapper = styled.div`
   }
 `;
 
-
-function TodoListAll(props) {
+function TodoGridAll(props) {
   const { todoLists } = props;
 
   return (
-    <ListWrapper>
+    <GridWrapper>
       {todoLists && todoLists.map((todoList) => {
         return (
-          <TodoListItem
+          <TodoGridItem
             key={todoList.id}
             todoList={todoList}
           />
         );
       })
       }
-    </ListWrapper>
+    </GridWrapper>
   )
 }
 
-export default TodoListAll;
+export default TodoGridAll;
