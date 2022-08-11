@@ -13,12 +13,12 @@ const Wrapper = styled.div`
 `;
 
 function TodoListCompleted(props) {
-  const { todoLists } = props;
+  const { todoLists, date } = props;
 
   return (
     <Wrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (todoList.isCompleted === true) {
+        if (todoList.isCompleted === true && date == todoList.createdAt.substr(0, 10)) {
           return (
             <TodoListItem
               key={todoList.id}

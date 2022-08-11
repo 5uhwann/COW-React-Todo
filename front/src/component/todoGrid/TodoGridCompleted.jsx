@@ -14,13 +14,14 @@ const GridWrapper = styled.div`
   }
 `;
 
-function TodoListCompleted(props) {
-  const { todoLists } = props;
+function TodoGridCompleted(props) {
+  const { todoLists, date } = props;
 
   return (
     <GridWrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (todoList.isCompleted === true) {
+        if (todoList.isCompleted === true &&
+          date == todoList.createdAt.substr(0, 10)) {
           return (
             <TodoGridItem
               key={todoList.id}
@@ -34,4 +35,4 @@ function TodoListCompleted(props) {
   )
 }
 
-export default TodoListCompleted;
+export default TodoGridCompleted;

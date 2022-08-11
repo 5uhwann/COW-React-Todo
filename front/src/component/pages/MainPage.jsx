@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Menu from '../menu/Menu';
+import DateFilter from '../ui/DateFilter';
 import TodoListAll from '../todoList/TodoListAll';
 import TodoListCompleted from '../todoList/TodoListCompleted';
 import TodoListUnCompleted from '../todoList/TodoListUnCompleted';
@@ -31,9 +32,16 @@ const Header = styled.div`
   height: 15%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid gray;
 `;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 
 const HeaderText = styled.p`
   width: fit-content;
@@ -41,6 +49,7 @@ const HeaderText = styled.p`
   color: #7890E7;
   font-weight: bold;
   margin: auto 90px;
+  margin-right: 20px;
 `;
 
 const HeaderViewButton = styled.div`
@@ -61,39 +70,40 @@ const Body = styled.div`
 `;
 
 
-function MainPage(prosp) {
+function MainPage(props) {
 
   const [todoList, setTodoList] = useState();
   const [filter, setFilter] = useState("all");
   const [view, setView] = useState("list");
-
-  let todo;
-
-  if (view == "list") {
-    if (filter == "all") {
-      todo = <TodoListAll todoLists={todoList} />;
-    } else if (filter == "completed") {
-      todo = <TodoListCompleted todoLists={todoList} />;
-    } else if (filter == "unCompleted") {
-      todo = <TodoListUnCompleted todoLists={todoList} />;
-    }
-  } else {
-    if (filter == "all") {
-      todo = <TodoGridAll todoLists={todoList} />;
-    } else if (filter == "completed") {
-      todo = <TodoGridCompleted todoLists={todoList} />;
-    } else if (filter == "unCompleted") {
-      todo = <TodoGridUnComplted todoLists={todoList} />;
-    }
-  }
-
+  const [date, setDate] = useState("2022-08-08");
 
   useEffect(() => {
     axios.get("/todo")
       .then(function (response) {
         setTodoList(response.data);
+        console.log(response.data);
       })
   })
+
+  let todo;
+  if (view === "list") {
+    if (filter === "all") {
+      todo = <TodoListAll todoLists={todoList} date={date} />;
+    } else if (filter === "completed") {
+      todo = <TodoListCompleted todoLists={todoList} date={date} />;
+    } else if (filter === "unCompleted") {
+      todo = <TodoListUnCompleted todoLists={todoList} date={date} />;
+    }
+  } else {
+    if (filter === "all") {
+      todo = <TodoGridAll todoLists={todoList} date={date} />;
+    } else if (filter === "completed") {
+      todo = <TodoGridCompleted todoLists={todoList} date={date} />;
+    } else if (filter === "unCompleted") {
+      todo = <TodoGridUnComplted todoLists={todoList} date={date} />;
+    }
+  }
+
 
   return (
     <Wrapper>
@@ -101,7 +111,16 @@ function MainPage(prosp) {
 
       <Container>
         <Header>
-          <HeaderText>Todo</HeaderText>
+          <HeaderContainer>
+            <HeaderText>Todo</HeaderText>
+            <DateFilter
+              todoList={todoList}
+              onChange={(event) => {
+                setDate(event.target.value);
+              }}
+            />
+          </HeaderContainer>
+
           <HeaderViewButton>
             <ListViewButton
               onClick={() => {
@@ -123,9 +142,6 @@ function MainPage(prosp) {
               axios.post("/todo",
                 {
                   content: " "
-                })
-                .then(function (response) {
-                  console.log(response);
                 })
             }}
           />
