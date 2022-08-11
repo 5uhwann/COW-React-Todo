@@ -15,17 +15,19 @@ const ListWrapper = styled.div`
 
 
 function TodoListAll(props) {
-  const { todoLists } = props;
+  const { todoLists, date } = props;
 
   return (
     <ListWrapper>
       {todoLists && todoLists.map((todoList) => {
-        return (
-          <TodoListItem
-            key={todoList.id}
-            todoList={todoList}
-          />
-        );
+        if (date == todoList.createdAt.substr(0, 10)) {
+          return (
+            <TodoListItem
+              key={todoList.id}
+              todoList={todoList}
+            />
+          );
+        }
       })
       }
     </ListWrapper>

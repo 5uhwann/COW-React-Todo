@@ -16,17 +16,19 @@ const GridWrapper = styled.div`
 `;
 
 function TodoGridAll(props) {
-  const { todoLists } = props;
+  const { todoLists, date } = props;
 
   return (
     <GridWrapper>
       {todoLists && todoLists.map((todoList) => {
-        return (
-          <TodoGridItem
-            key={todoList.id}
-            todoList={todoList}
-          />
-        );
+        if (date == todoList.createdAt.substr(0, 10)) {
+          return (
+            <TodoGridItem
+              key={todoList.id}
+              todoList={todoList}
+            />
+          );
+        }
       })
       }
     </GridWrapper>
