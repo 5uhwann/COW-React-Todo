@@ -18,13 +18,15 @@ function TodoListUnComplted(props) {
   return (
     <Wrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (todoList.isCompleted === false && date == todoList.createdAt.substr(0, 10)) {
-          return (
-            <TodoListItem
-              key={todoList.id}
-              todoList={todoList}
-            />
-          );
+        if (todoList.isCompleted === false) {
+          if (date == todoList.createdAt.substr(0, 10) || date == "---") {
+            return (
+              <TodoListItem
+                key={todoList.id}
+                todoList={todoList}
+              />
+            );
+          }
         }
       })
       }

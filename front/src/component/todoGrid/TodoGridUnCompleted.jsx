@@ -20,14 +20,15 @@ function TodoGridUnComplted(props) {
   return (
     <GridWrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (todoList.isCompleted === false &&
-          date == todoList.createdAt.substr(0, 10)) {
-          return (
-            <TodoGridItem
-              key={todoList.id}
-              todoList={todoList}
-            />
-          );
+        if (todoList.isCompleted === false) {
+          if (date == todoList.createdAt.substr(0, 10) || date == "---") {
+            return (
+              <TodoGridItem
+                key={todoList.id}
+                todoList={todoList}
+              />
+            );
+          }
         }
       })
       }

@@ -21,7 +21,7 @@ function TodoGridAll(props) {
   return (
     <GridWrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (date == todoList.createdAt.substr(0, 10)) {
+        if (date == todoList.createdAt.substr(0, 10) || date == "---") {
           return (
             <TodoGridItem
               key={todoList.id}

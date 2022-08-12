@@ -25,6 +25,7 @@ function DateFilter(props) {
 
   return (
     <StyledSelect onChange={onChange}>
+      <option>---</option>
       {dateLists.map((list) => {
         return (
           <option>{list}</option>
