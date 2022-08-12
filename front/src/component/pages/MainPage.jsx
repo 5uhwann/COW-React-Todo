@@ -75,7 +75,7 @@ function MainPage(props) {
   const [todoList, setTodoList] = useState();
   const [filter, setFilter] = useState("all");
   const [view, setView] = useState("list");
-  const [date, setDate] = useState("2022-08-08");
+  const [date, setDate] = useState("---");
 
   useEffect(() => {
     axios.get("/todo")

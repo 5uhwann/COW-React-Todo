@@ -20,7 +20,7 @@ function TodoListAll(props) {
   return (
     <ListWrapper>
       {todoLists && todoLists.map((todoList) => {
-        if (date == todoList.createdAt.substr(0, 10)) {
+        if (date == todoList.createdAt.substr(0, 10) || date == "---") {
           return (
             <TodoListItem
               key={todoList.id}
