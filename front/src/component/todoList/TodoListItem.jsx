@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px 0;
+  margin-left: 15px;
   border: none;
   border-radius: 10px;
   ${(props) =>
@@ -18,7 +19,8 @@ const Wrapper = styled.div`
   };
   cursor: pointer;
   :hover{
-    background: #9dabf9;
+    transform: scale(1.05);
+    transition: all 0.3s;
   }
 `;
 

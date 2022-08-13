@@ -5,8 +5,8 @@ import DeleteButton from '../ui/DeleteButton';
 import axios from 'axios';
 
 const Wrapper = styled.div`
-  width: 20%;
-  height: 20%;
+  width: 23%;
+  height: 23%;
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -18,7 +18,8 @@ const Wrapper = styled.div`
   };
   cursor: pointer;
   :hover{
-    background: #9dabf9;
+    transform: scale(1.05);
+    transition: all 0.3s;
   }
 `;
 
