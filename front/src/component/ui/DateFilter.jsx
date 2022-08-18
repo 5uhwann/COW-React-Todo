@@ -28,7 +28,7 @@ function DateFilter(props) {
       <option>---</option>
       {dateLists.map((list) => {
         return (
-          <option>{list}</option>
+          <option key={todoList.id}>{list}</option>
         );
       })}
     </StyledSelect>

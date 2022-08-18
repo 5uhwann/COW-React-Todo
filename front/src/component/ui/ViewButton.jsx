@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList } from '@fortawesome/free-solid-svg-icons'
+
 
 const StyledViewButton = styled.button`
   width: 40%;
@@ -16,12 +15,12 @@ const StyledViewButton = styled.button`
   background: transparent;
 `;
 
-function ListViewButton(props) {
-  const { onClick } = props;
+function ViewButton(props) {
+  const { onClick, icon } = props;
 
   return <StyledViewButton onClick={onClick}>
-    <FontAwesomeIcon icon={faList} />
+    {icon}
   </StyledViewButton>
 }
 
-export default ListViewButton;
+export default ViewButton;

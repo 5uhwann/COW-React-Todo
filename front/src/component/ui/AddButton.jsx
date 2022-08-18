@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
+import axios from 'axios';
 
 const StyledAddButton = styled.button`
   width: 100px;
@@ -21,11 +22,16 @@ const StyledAddButton = styled.button`
 `;
 
 function AddButton(props) {
-  const { onClick } = props;
+  const { content } = props;
 
   return (
-    <StyledAddButton onClick={onClick}>
-      +
+    <StyledAddButton onClick={() => {
+      axios.post("/todo",
+        {
+          content: " "
+        })
+    }}>
+      {content}
     </StyledAddButton>
   )
 }

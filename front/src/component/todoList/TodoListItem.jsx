@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Input from '../ui/ListItemInput';
+import Input from '../ui/ItemInput';
 import DeleteButton from '../ui/DeleteButton';
 import axios from 'axios';
 

@@ -9,8 +9,10 @@ import TodoGridAll from '../todoGrid/TodoGridAll';
 import TodoGridCompleted from '../todoGrid/TodoGridCompleted';
 import TodoGridUnComplted from '../todoGrid/TodoGridUnCompleted';
 import AddButton from '../ui/AddButton';
-import ListViewButton from '../ui/ListViewButton';
-import GridViewButton from '../ui/GridViewButton';
+import ViewButton from '../ui/ViewButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquare } from '@fortawesome/free-solid-svg-icons'
+import { faList } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 
 const Wrapper = styled.div`
@@ -81,7 +83,6 @@ function MainPage(props) {
     axios.get("/todo")
       .then(function (response) {
         setTodoList(response.data);
-        console.log(response.data);
       })
   })
 
@@ -122,15 +123,17 @@ function MainPage(props) {
           </HeaderContainer>
 
           <HeaderViewButton>
-            <ListViewButton
+            <ViewButton
               onClick={() => {
                 setView("list")
               }}
+              icon={<FontAwesomeIcon icon={faList} />}
             />
-            <GridViewButton
+            <ViewButton
               onClick={() => {
                 setView("grid")
               }}
+              icon={<FontAwesomeIcon icon={faSquare} />}
             />
           </HeaderViewButton>
         </Header>
@@ -138,12 +141,7 @@ function MainPage(props) {
         <Body>
           {todo}
           <AddButton
-            onClick={() => {
-              axios.post("/todo",
-                {
-                  content: " "
-                })
-            }}
+            content={"+"}
           />
         </Body>
       </Container>
